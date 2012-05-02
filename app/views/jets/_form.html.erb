@@ -1,0 +1,50 @@
+<html>
+  <head>
+ <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+		
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+	<div class="nav-collapse">
+            <ul class="nav">
+              <li><%= link_to image_tag("logo.png", :border => 0), {}, {}%></li>
+		<li><a href="../">Logout</a></li>
+              </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+<%= form_for(@jet) do |f| %>
+  <% if @jet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jet.errors.count, "error") %> prohibited this jet from being saved:</h2>
+
+      <ul>
+      <% @jet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :userid %><br />
+    <%= f.number_field :userid %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+</body>
+</html>
